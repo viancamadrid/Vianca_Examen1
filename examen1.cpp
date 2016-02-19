@@ -31,9 +31,9 @@ int main(int ragc, char*argv[]){
 		if(pos){
 			matriz=convertir(matriz, p1, p2, 2, 1);
 			imprimirTablero(matriz);
-			if(lleno(matriz)){
-				ganador=true;
-			}		
+			/*if(lleno(matriz)){
+		*/		ganador=true;
+					
 		}else{
 			cout<<"No se Puede Colocar en Esa Coordenada"<<endl;
 		}
@@ -79,6 +79,11 @@ void llenarCubo(int** tablero){
 
 void imprimirTablero(int** tablero){
 	for(int i=0; i<7; i++){
+		cout<<i<<"\t";
+	}
+	cout<<endl;
+	for(int i=0; i<7; i++){
+		//cout<<i<<"\t";
 		for(int j=0; j<7; j++){
 			cout<<tablero[i][j]<<"\t";
 		}
@@ -114,7 +119,7 @@ int** convertir(int** matriz, int x, int y, int op, int jug){
 		if(matriz[x+cont][y+cont]==op){
 			matriz[x+cont][y+cont]=jug;
 		}
-	
+	}
 	return matriz;
 	
 }
@@ -130,7 +135,7 @@ bool validar(int** matriz, int x, int y){
 bool lleno (int** matriz){
 	int c=0;
 	for(int i=0; i<7; i++){
-		for (int j=0, j<7; j++){
+		for (int j=0; j<7; j++){
 			if(matriz[i][j]=0){
 				c++;
 			}	
@@ -140,4 +145,20 @@ bool lleno (int** matriz){
 		return true;
 	else
 		return false;
+}
+
+void contar(int** matriz){
+	int c1=0, c2=0;
+	for(int i=0; i<7; i++){
+		for(int j=0; j<7; j++){
+			if(matriz[i][j]==1)
+				c1++;
+			if(matriz[i][j]==2)
+				c2++;
+		}
+	}
+	if(c1>c2)
+		cout<<"Jugador 1 Gana"<<endl;
+	else
+		cout<<"Jugador 2 Gana"<<endl;
 }
