@@ -30,7 +30,10 @@ int main(int ragc, char*argv[]){
 		pos=validar(matriz,p1,p2);		
 		if(pos){
 			matriz=convertir(matriz, p1, p2, 2, 1);
-			imprimirTablero(matriz);		
+			imprimirTablero(matriz);
+			if(lleno(matriz)){
+				ganador=true;
+			}		
 		}else{
 			cout<<"No se Puede Colocar en Esa Coordenada"<<endl;
 		}
@@ -111,9 +114,7 @@ int** convertir(int** matriz, int x, int y, int op, int jug){
 		if(matriz[x+cont][y+cont]==op){
 			matriz[x+cont][y+cont]=jug;
 		}
-	}else{
-		
-	}	
+	
 	return matriz;
 	
 }
